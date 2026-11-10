@@ -1,6 +1,7 @@
 ---
 import FutureLink from "./FutureLink.astro";
 import { site } from "../data/site";
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 const sections = ["Що лікуємо", "Напрямки", "Консультації лікарів", "Усі фахівці", "Повний прайс", "Правила для пацієнтів", "Протипоказання"];
 ---
 <footer class="site-footer">
@@ -8,8 +9,8 @@ const sections = ["Що лікуємо", "Напрямки", "Консульта
     <div class="site-footer__brand">
       <a class="logo" href="#top" aria-label="Somatica — на початок сторінки">
         <picture>
-          <source srcset="/img/somatica-logo.webp" type="image/webp" />
-          <img src="/img/somatica-logo.png" alt="Somatica — Український центр реабілітації" width="145" height="37" />
+          <source srcset={`${base}img/somatica-logo.webp`} type="image/webp" />
+          <img src={`${base}img/somatica-logo.png`} alt="Somatica — Український центр реабілітації" width="145" height="37" />
         </picture>
       </a>
       <a class="site-footer__phone" href={site.phone.href}>{site.phone.text}</a>
