@@ -1,0 +1,51 @@
+---
+import Icon from "./Icon.astro";
+import CallButton from "./CallButton.astro";
+import { site } from "../data/site";
+const links = [
+  { href: "#problems", label: "З чим звертаються" },
+  { href: "#path", label: "З чого почати" },
+  { href: "#directions", label: "Напрями" },
+  { href: "#doctors", label: "Лікарі" },
+  { href: "#prices", label: "Ціни" },
+  { href: "#contacts", label: "Контакти" },
+];
+---
+<header class="site-header" data-header>
+  <div class="container site-header__row">
+    <a class="logo" href="#top" aria-label="Somatica — на початок сторінки">
+      <picture>
+        <source srcset="/img/somatica-logo.webp" type="image/webp" />
+        <img src="/img/somatica-logo.png" alt="Somatica — Український центр реабілітації" width="145" height="37" fetchpriority="high" />
+      </picture>
+    </a>
+    <nav class="nav" aria-label="Розділи сторінки">
+      <ul class="nav__list">
+        {links.map((l) => <li><a class="nav__link" href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+    <div class="site-header__action" data-rec="R-102">
+      <a class="header-phone" href={site.phone.href}>{site.phone.text}</a>
+      <CallButton class="site-header__call" />
+    </div>
+    <details class="menu" data-menu>
+      <summary class="menu__toggle">
+        <Icon name="menu" size={22} class="menu__icon-open" />
+        <Icon name="close" size={22} class="menu__icon-close" />
+        <span class="visually-hidden">Меню</span>
+      </summary>
+      <div class="menu__panel">
+        <nav aria-label="Розділи сторінки (меню)">
+          <ul class="menu__list">
+            {links.map((l) => <li><a class="menu__link" href={l.href}>{l.label}</a></li>)}
+          </ul>
+        </nav>
+        <div class="menu__contacts">
+          <a class="menu__phone" href={site.phone.href}>{site.phone.text}</a>
+          <a class="text-link" href={site.email.href}>{site.email.text}</a>
+          <p class="menu__address">{site.address.street}, {site.address.floor}, {site.address.metro}</p>
+        </div>
+      </div>
+    </details>
+  </div>
+</header>

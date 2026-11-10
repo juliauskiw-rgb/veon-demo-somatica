@@ -1,0 +1,11 @@
+---
+// The one action of the page: a real call to the published number (tel: matches the visible digits, I-005).
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+interface Props { size?: "md" | "lg"; block?: boolean; label?: string; class?: string; rec?: string; }
+const { size = "md", block = false, label = "Подзвонити", class: cls, rec } = Astro.props;
+---
+<a class:list={["call", `call--${size}`, { "call--block": block }, cls]} href={site.phone.href} data-rec={rec}>
+  <Icon name="phone" size={size === "lg" ? 22 : 20} />
+  <span>{label}</span>
+</a>

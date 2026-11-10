@@ -1,0 +1,75 @@
+/* Hallmark · shape: patient-phrase index · genre: editorial · theme: custom · job: book · idea: "Сайт говорить мовою пацієнта, а не методу: фрази «болить спина», «після операції» ведуть одразу до лікаря, програми, ціни й телефону" · vibe: "теплий, людяний, спокійний, точний, без лікарняного холоду" · hero: H1, телефон текстом і помаранчева кнопка дзвінка ліворуч; праворуч покажчик із п'яти фраз пацієнта сходинкою · nav: fixed white bar, logo, six anchors, phone as text and a call pill; on phones logo, call pill and a disclosure menu · footer: light lilac contact footer with phone, e-mail, address, hours and future sections · imagery: none · surface: absolute white for header, price list and contacts (concept palette) · signature: покажчик ситуацій, де фраза зсувається на крок і показує, хто приймає
+ * axes: lilac/humanist-serif/orange · posture: restrained · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: imagery, the client has no usable photographs; typography carries the page and the two picture slots are labelled stand-ins with reserved ratios */
+/* Hallmark · waive 7b · --color-surface #FFFFFF is in the approved palette (design/concept.md §8.3, veon-concept colors) · white is used only for the header, the price list and the contacts surface against the lilac paper #F6F4FA; the concept chose it */
+/* Hallmark · waive 81 · two labelled picture slots (physician 4:5, entrance 3:2) · the client has no usable photographs; studio rule demo.md §6 requires a neutral stand-in captioned «зображення клієнта», never library or generated photos */
+/* Client design tokens: from design/concept.md (veon-concept: colors, fonts). One token system only. */
+
+/* Metric-matched fallbacks: no layout jump when the web fonts swap in (CLS 0, R-306). */
+@font-face { font-family: "Piazzolla Fallback"; src: local("Georgia"), local("Times New Roman"); size-adjust: 97%; ascent-override: 98%; descent-override: 27%; line-gap-override: 0%; }
+@font-face { font-family: "Onest Fallback"; src: local("Arial"), local("Helvetica"); size-adjust: 101%; ascent-override: 96%; descent-override: 25%; line-gap-override: 0%; }
+
+:root {
+  /* Colour roles (concept §8.3) */
+  --color-bg: #F6F4FA;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #ECE7F7;
+  --color-text: #211A33;
+  --color-muted: #5C5470;
+  --color-primary: #5B3CC4;
+  --color-band: #24164F;
+  --color-band-muted: #C9BFEA;
+  --color-accent: #E85A24;
+  --color-line: #DDD6EA;
+  --color-on-band: #F6F4FA;
+  --color-accent-ink: #211A33;
+  --color-focus: #5B3CC4;
+  --color-shadow: rgb(33 26 51 / 0.08);
+
+  /* Type */
+  --font-display: "Piazzolla Variable", "Piazzolla", "Piazzolla Fallback", Georgia, serif;
+  --font-body: "Onest Variable", "Onest", "Onest Fallback", Arial, sans-serif;
+  --fs-index: clamp(1.875rem, 0.9rem + 4.2vw, 5rem);   /* 30 → 80 */
+  --fs-h1: clamp(2.125rem, 1.55rem + 2.2vw, 3.5rem);   /* 34 → 56 */
+  --fs-h2: clamp(1.875rem, 1.35rem + 1.9vw, 2.75rem);  /* 30 → 44 */
+  --fs-h3: clamp(1.375rem, 1.2rem + 0.6vw, 1.625rem);  /* 22 → 26 */
+  --fs-lead: clamp(1.0625rem, 0.95rem + 0.4vw, 1.25rem); /* 17 → 20 */
+  --fs-body: clamp(1.0625rem, 1rem + 0.15vw, 1.125rem);  /* 17 → 18 */
+  --fs-small: clamp(0.875rem, 0.84rem + 0.12vw, 0.9375rem); /* 14 → 15 */
+  --fs-phone: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);  /* 28 → 40 */
+  --lh-tight: 1.08;
+  --lh-head: 1.15;
+  --lh-body: 1.6;
+  --measure: 68ch;
+
+  /* Space: step 8 (8 / 16 / 24 / 40 / 64 / 96 / 144) */
+  --s-1: 0.5rem;
+  --s-2: 1rem;
+  --s-3: 1.5rem;
+  --s-4: 2.5rem;
+  --s-5: 4rem;
+  --s-6: 6rem;
+  --s-7: 9rem;
+  --section-gap: clamp(5rem, 3rem + 5.5vw, 9rem);  /* 80 → 144 */
+  --gutter: clamp(1rem, 0.8rem + 0.6vw, 1.5rem);   /* 16 → 24 */
+  --space: clamp(1.25rem, -0.1rem + 4.2vw, 5rem);  /* page side margin 20 → 80 */
+  --container: 1280px;
+  --header-h: 72px;
+
+  /* Shape */
+  --radius: 4px;
+  --radius-card: 16px;
+  --radius-pill: 999px;
+  --tap: 44px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
+  --dur: 600ms;
+  --dur-fast: 240ms;
+  --dur-open: 280ms;
+  --dur-line: 900ms;
+}
+
+@media (max-width: 47.99rem) {
+  :root { --header-h: 64px; }
+}

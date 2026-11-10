@@ -1,0 +1,12 @@
+---
+// Mobile call bar: appears after the first screen (R-102). Phones only; hidden on wide screens.
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+---
+<div class="callbar" data-callbar data-rec="R-102">
+  <a class="callbar__link" href={site.phone.href}>
+    <Icon name="phone" size={20} />
+    <span>Подзвонити</span>
+    <span class="callbar__num">{site.phone.text}</span>
+  </a>
+</div>
